@@ -1,0 +1,105 @@
+﻿<UserControl 
+  x:Class="DataTableViewer.ViewerControl"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+  xmlns:local="clr-namespace:DataTableViewer"
+	xmlns:xcdg="http://schemas.xceed.com/wpf/xaml/datagrid"
+	xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+	DataContext="{Binding RelativeSource={RelativeSource Self}}"
+  mc:Ignorable="d" 
+  d:DesignHeight="500" 
+  d:DesignWidth="500"
+>
+  <Control.CommandBindings>
+    <CommandBinding Command="local:CustomCommands.CopyWithHeaders" Executed="CopyWithHeadersCommandExecuted"/>
+  </Control.CommandBindings>
+  <UserControl.Resources>
+    <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+  </UserControl.Resources>
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="20"/>
+      <RowDefinition Height="*"/>
+    </Grid.RowDefinitions>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="20"/>
+      <ColumnDefinition Width="*"/>
+    </Grid.ColumnDefinitions>
+    <Grid.Resources>
+      <xcdg:IndexToOddConverter x:Key="rowIndexConverter"/>
+
+      <Style TargetType="{x:Type xcdg:DataCell}">
+        <Setter Property="SelectionForeground" Value="White"/>
+        <Setter Property="SelectionBackground" Value="#093682"/>
+      </Style>
+      <Style TargetType="{x:Type xcdg:DataRow}">
+        <Setter Property="Background" Value="DarkGray"></Setter>
+        <Style.Triggers>
+          <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=(xcdg:DataGridVirtualizingPanel.ItemIndex), Converter={StaticResource rowIndexConverter}}" Value="True">
+            <Setter Property="Background">
+              <Setter.Value>
+                <SolidColorBrush Color="LightGray" Opacity="1"/>
+              </Setter.Value>
+            </Setter>
+          </DataTrigger>
+        </Style.Triggers>
+      </Style>
+    </Grid.Resources>
+    <Rectangle Grid.Row="0" Grid.Column="0" Fill="DarkGray"/>
+    <Image Grid.Row="0" Grid.Column="0" Source="Images/Uncommitted.png" Visibility="{Binding UncommittedSearchChange, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+    <Image Grid.Row="0" Grid.Column="0" Source="{Binding ImageSource}" ToolTipService.ShowDuration="2147483647">
+      <Image.ToolTip>
+        <TextBlock>
+          Type into the box to apply a filter. Either a free-text query that will run a 'contains' match against every column or an OData-like query which can target specific columns.<LineBreak/>
+          <LineBreak/>
+          The filter icon will be orange if a valid OData-like filter is applied, yellow if a contains filter is applied, or empty if no filter is currently applied.<LineBreak/>
+          <LineBreak/>
+          The blue "orb" next to the filter icon indicates the filter string has been changed but not yet applied. Apply a filter by hitting "Enter".<LineBreak/>
+          <LineBreak/>
+          OData-like queries support the following operators: eq, ne, gt, ge, lt, le, and, or, not.<LineBreak/>
+          Strings and dates must be single quoted for OData queries. Numbers and booleans should not contain quotes.<LineBreak/>
+          All column names and string matches are case-insensitive.<LineBreak/>
+          Two special operators are also provided: ct, rx. These are "contains" and "regex", respectively. <LineBreak/>
+          "ct" will turn whatever column it is applied against into a string and run a contains match.<LineBreak/>
+          "rx" will turn whatever column it is applied against into a string and run a regex match, utilizing standard .NET regular expressions. <LineBreak/>
+          The following OData functions are also provided: startswith(), endswith(), substringof(), year(), month(), day(), hour(), minute(), second().<LineBreak/>
+          <LineBreak/>
+          Examples:<LineBreak/>
+          age gt 21<LineBreak/>
+          address rx '..00 Pennslyvania Avenue'<LineBreak/>
+          uniqueid ct '5def'<LineBreak/>
+          DOB lt '1990-01-08'<LineBreak/>
+          DOB ne '1990-01-05' or not (Name eq 'Fred')<LineBreak/>
+        </TextBlock>
+      </Image.ToolTip>
+      <!--<Image.Style>
+        <Style TargetType="Image">
+          <Style.Triggers>
+            <MultiDataTrigger>
+              <MultiDataTrigger.Conditions>
+                <Condition Binding="{Binding ElementName=FilterIcon, Path=IsMouseOver}" Value="True"/>
+                <Condition Binding="{Binding IsFilter}" Value="True"/>
+              </MultiDataTrigger.Conditions>
+              <Setter Property="Image.Source" Value="Images/FullFilterCrossedOut.png"/>
+            </MultiDataTrigger>
+          </Style.Triggers>
+        </Style>
+      </Image.Style>-->
+    </Image>
+    
+    <xctk:AutoSelectTextBox Grid.Row="0" Grid.Column="1" Text="{Binding PendingSearch, UpdateSourceTrigger=PropertyChanged}" AutoSelectBehavior="OnFocus" LostFocus="SearchBox_OnLostFocus" KeyUp="SearchBoxKeyUp"/>
+    <xcdg:DataGridControl x:Name="TheGrid"  Grid.Row="1" Grid.ColumnSpan="2" ItemsSource="{Binding TableView}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Background="Gray" ReadOnly="True" SelectionMode="Extended" SelectionUnit="Cell">
+      <xcdg:DataGridControl.ContextMenu>
+        <ContextMenu>
+          <MenuItem x:Name="CopyContextItem" Command="Copy"/>
+          <MenuItem x:Name="CopyWithHeadersContextItem" Command="local:CustomCommands.CopyWithHeaders"/>
+        </ContextMenu>
+      </xcdg:DataGridControl.ContextMenu>
+      <xcdg:DataGridControl.View>
+        <xcdg:TableView IsAlternatingRowStyleEnabled="True" IsColumnVirtualizationEnabled="True" HorizontalGridLineBrush="Black" VerticalGridLineBrush="Black" />
+      </xcdg:DataGridControl.View>
+    </xcdg:DataGridControl>
+  </Grid>
+</UserControl>
