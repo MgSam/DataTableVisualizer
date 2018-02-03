@@ -4,13 +4,17 @@
         <Identity Id="DataTableVisualizerExtension.2b1094ae-f71a-498a-acb1-33652115e037" Version="1.0" Language="en-US" Publisher="Sam Scheinhaus" />
         <DisplayName>Data Table Visualizer</DisplayName>
         <Description xml:space="preserve">A non-modal, VS tool-window integrated, searchable DataTable visualizer.</Description>
-        <Icon>TableIcon.ico</Icon>
+        <MoreInfo>https://github.com/MgSam/DataTableVisualizer</MoreInfo>
+        <GettingStartedGuide>Resources\ReadMe.txt</GettingStartedGuide>
+        <Icon>Resources\TableIconLarge.png</Icon>
+        <PreviewImage>Resources\Preview.png</PreviewImage>
+        <Tags>visualizer, extensions, vsix</Tags>
     </Metadata>
     <Installation>
         <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[15.0]" />
     </Installation>
     <Dependencies>
-        <Dependency Id="Microsoft.Framework.NDP" DisplayName="Microsoft .NET Framework" d:Source="Manual" Version="[4.5,)" />
+        <Dependency Id="Microsoft.Framework.NDP" DisplayName="Microsoft .NET Framework" d:Source="Manual" Version="[4.6.1,)" />
         <Dependency Id="Microsoft.VisualStudio.MPF.15.0" DisplayName="Visual Studio MPF 15.0" d:Source="Installed" Version="[15.0]" />
     </Dependencies>
     <Prerequisites>

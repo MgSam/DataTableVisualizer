@@ -48,6 +48,8 @@ namespace Test2
 
             var w = new ViewerWindow() { Table = table };
             w.ShowDialog();
+
+            Application.Exit();
         }
 
         private void test<T>(IEqualityComparer<T> comparer)

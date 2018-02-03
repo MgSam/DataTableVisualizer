@@ -1,6 +1,8 @@
 # DataTableVisualizer
 A non-modal, VS tool-window integrated, searchable DataTable visualizer for Visual Studio.
 
+To access the visualizer, you must be debugging and stopped at a breakpoint. Click the down arrow while hovering over a DataTable variable and select "ShineTools.DataTableVisualizer".
+
 This is my first extension, so feedback is welcome!
 
 ## Instructions:

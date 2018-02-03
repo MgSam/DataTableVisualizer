@@ -1,5 +1,7 @@
 ﻿Thank you for trying the DataTable Visualizer! This is my first extension, so feedback is welcome! (On the VS extension gallery or Github!)
 
+To access the visualizer, you must be debugging and stopped at a breakpoint. Click the down arrow while hovering over a DataTable variable and select "ShineTools.DataTableVisualizer".
+
 Instructions:
 Note: This information is all available from within the grid as a tooltip on the filter icon. 
 
