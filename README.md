@@ -7,7 +7,7 @@ To access the visualizer, you must be debugging and stopped at a breakpoint. Cli
 
 This is my first extension, so feedback is welcome!
 
-![Preview.png](DataTableVisualizerExtension\Resources\Preview.png)
+![Preview.png](https://github.com/MgSam/DataTableVisualizer/blob/master/DataTableVisualizerExtension/Resources/Preview.png)
 
 ## Instructions:
 
