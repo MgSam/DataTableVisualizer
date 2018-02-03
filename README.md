@@ -9,7 +9,14 @@ This is my first extension, so feedback is welcome!
 
 ![Preview.png](https://github.com/MgSam/DataTableVisualizer/blob/master/DataTableVisualizerExtension/Resources/Preview.png)
 
-## Instructions:
+## Installation
+Run the installer executable*. Once it completes, the VSIX installer will then launch. Run that after closing Visual Studio and it will complete the installation.
+
+*Unfortunately, to install a custom visualizer this extension needs its own installer as it needs to do more than a standard VSIX is capable of. (Visual Studio doesn't directly support custom visualizers in VSIX extensions). The installer writes to the Visual Studio installation folder, registers the visualizer, and recompiles the DLL Visual Studio uses to find extensions (autoexp.cs). 
+
+As this is an open-source project, I'm not going to pay hundreds of dollars to get a cert to sign the exe, so unfortunately you'll have to  ignore Windows warnings. :/ The code, including the installer script is all available on Github so you can verify that it's safe if you're worried.
+
+## Instructions
 
 *Note: This information is all available from within the grid as a tooltip on the filter icon. In other words, don't worry, you don't have to memorize it to get started.*
 
@@ -29,7 +36,7 @@ Two special operators are also provided: `ct`, `rx`. These are "contains" and "r
 
 The following OData functions are also provided: `startswith()`, `endswith()`, `substringof()`, `year()`, `month()`, `day()`, `hour()`, `minute()`, `second()`.
    
-#### Examples: 
+#### Examples
 ```   
 age gt 21
 address rx '..00 Pennslyvania Avenue'
