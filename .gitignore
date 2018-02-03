@@ -9,13 +9,13 @@ template-report.xml
 .vs/
 
 # Build results
-
 [Dd]ebug/
 [Rr]elease/
 x64/
 [Bb]in/
 [Oo]bj/
 [Cc]ompiled/
+[Pp]ackages/
 
 # MSTest test Results
 [Tt]est[Rr]esult*/

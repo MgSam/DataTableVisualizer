@@ -13,6 +13,17 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataTableVisualizerExtensio
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataTableTest", "DataTableTest\DataTableTest.csproj", "{2427A620-EE8B-4BA3-A82E-47AF01ADF7A3}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataTableVisualizerInstaller", "DataTableVisualizerInstaller", "{14BD79F0-E95C-486E-9B1B-A63DB64095AA}"
+	ProjectSection(SolutionItems) = preProject
+		DataTableVisualizerInstaller\Installer.iss = DataTableVisualizerInstaller\Installer.iss
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{725543B1-3720-4117-9E08-EB51233643D3}"
+	ProjectSection(SolutionItems) = preProject
+		DataTableVisualizerInstaller\Scripts\InstallDataTableVisualizer.ps1 = DataTableVisualizerInstaller\Scripts\InstallDataTableVisualizer.ps1
+		DataTableVisualizerInstaller\Scripts\UninstallDataTableVisualizer.ps1 = DataTableVisualizerInstaller\Scripts\UninstallDataTableVisualizer.ps1
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,6 +53,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{725543B1-3720-4117-9E08-EB51233643D3} = {14BD79F0-E95C-486E-9B1B-A63DB64095AA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8B17895F-2117-4644-A4FC-8AD71C9635CE}
