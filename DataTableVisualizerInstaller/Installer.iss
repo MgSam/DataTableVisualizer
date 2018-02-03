@@ -24,6 +24,7 @@ DisableDirPage=yes
 DefaultGroupName={#MyAppName}
 DisableProgramGroupPage=yes
 OutputBaseFilename=DataTableVisualizerSetup
+OutputDir=..\
 Compression=lzma
 SolidCompression=yes
 UsePreviousAppDir=no
