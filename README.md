@@ -1,13 +1,17 @@
-# DataTableVisualizer
-A non-modal, VS tool-window integrated, searchable DataTable visualizer for Visual Studio.
+# DataTable Visualizer
+Are you tired of Visual Studio's built-in, modal, slow, unsearchable DataTable Visualizer? Me too! That's why I made my own!
 
-To access the visualizer, you must be debugging and stopped at a breakpoint. Click the down arrow while hovering over a DataTable variable and select "ShineTools.DataTableVisualizer".
+This Visual Studio Extension provides a **non-modal**, **dockable**, and **searchable** DataTable visualizer for Visual Studio. It contains a very powerful text filter that takes either free text, or OData-like queries for fantastic searching! It also makes it really simple to copy and paste the data into Excel if you need to!
+
+To access the visualizer, you must be debugging and stopped at a breakpoint. Click the down arrow while hovering over a DataTable variable and select "ShineTools.DataTableVisualizer". (I made the name different so as not to clash with the crappy built in visualizer)
 
 This is my first extension, so feedback is welcome!
 
+![Preview.png](DataTableVisualizerExtension\Resources\Preview.png)
+
 ## Instructions:
 
-*Note: This information is all available from within the grid as a tooltip on the filter icon.*
+*Note: This information is all available from within the grid as a tooltip on the filter icon. In other words, don't worry, you don't have to memorize it to get started.*
 
 Type into the box to apply a filter. Either a free-text query that will run a 'contains' match against every column or an OData-like query which can target specific columns.
 
